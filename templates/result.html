@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container result-box">
+        <h1>🔍 Prediction Result</h1>
+        <div class="result-card">
+            <p><strong>Prediction:</strong> 
+                <span class="{{ 'converted' if prediction == 1 else 'not-converted' }}">
+                    {{ "✔️ Converted" if prediction == 1 else "❌ Not Converted" }}
+                </span>
+            </p>
+            <p><strong>Probability:</strong></p>
+            <ul>
+                <li>Not Converted (0): {{ proba[0] | round(4) }}</li>
+                <li>Converted (1): {{ proba[1] | round(4) }}</li>
+            </ul>
+        </div>
+        <a class="back-btn" href="/">🔁 Make Another Prediction</a>
+    </div>
+</body>
+</html>
